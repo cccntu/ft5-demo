@@ -1,0 +1,4 @@
+https://github.com/cccntu/transformers/archive/refs/tags/ft5-v1.zip
+sentencepiece # t5 tokenizer
+torch
+gradio
