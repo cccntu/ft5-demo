@@ -4,6 +4,10 @@ from transformers.models.f_t5.modeling_t5 import \
 from transformers.models.f_t5.tokenization_t5_fast import \
     T5TokenizerFast as FT5TokenizerFast
 
+import json
+with open('examples.json') as f:
+    examples = json.load(f)['article']
+
 model_name = "./flax-community__ft5-cnn-dm.859350e337148108b32b6f9eef45d0d4c6b668a9"
 ft5_model = FT5ForConditionalGeneration.from_pretrained(model_name)
 ft5_tokenizer = FT5TokenizerFast.from_pretrained(model_name)
@@ -34,8 +38,16 @@ interface = gr.Interface(
         gr.inputs.Slider(0.0, 1.0, step=0.1, default=1, label='top_p'),
     ], 
     outputs=gr.outputs.Textbox(),
-    server_port=17860,
+    server_port=8080,
     server_name='0.0.0.0',
+    examples=[[ex] for ex in examples],
+    title='F-T5 News Summarization',
+    description="""
+F-T5 is a hybrid encoder-decoder model based on T5 and FNet.
+The model architecture is based on T5, except the encoder self attention is replaced by fourier transform as in FNet.
+The model is pre-trained on openwebtext, fine-tuned on CNN/DM.
+"""
+
 )
 
 interface.launch()
