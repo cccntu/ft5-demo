@@ -4,7 +4,7 @@ from transformers.models.f_t5.modeling_t5 import \
 from transformers.models.f_t5.tokenization_t5_fast import \
     T5TokenizerFast as FT5TokenizerFast
 
-model_name = 'flax-community/ft5-cnn-dm'
+model_name = "./flax-community__ft5-cnn-dm.859350e337148108b32b6f9eef45d0d4c6b668a9"
 ft5_model = FT5ForConditionalGeneration.from_pretrained(model_name)
 ft5_tokenizer = FT5TokenizerFast.from_pretrained(model_name)
 ft5_summarizer = pipeline(
