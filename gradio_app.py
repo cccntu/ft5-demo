@@ -1,3 +1,4 @@
+import os
 from transformers import T5ForConditionalGeneration, T5TokenizerFast, pipeline
 from transformers.models.f_t5.modeling_t5 import \
     T5ForConditionalGeneration as FT5ForConditionalGeneration
@@ -38,7 +39,7 @@ interface = gr.Interface(
         gr.inputs.Slider(0.0, 1.0, step=0.1, default=1, label='top_p'),
     ], 
     outputs=gr.outputs.Textbox(),
-    server_port=8080,
+    server_port=int(os.environ.get('PORT', 8080)),
     server_name='0.0.0.0',
     examples=[[ex] for ex in examples],
     title='F-T5 News Summarization',
