@@ -45,8 +45,6 @@ def fn(*args):
 
 
 import gradio as gr
-PORT = os.environ.get('PORT', None)
-PORT = int(PORT) if PORT is not None else None
 
 interface = gr.Interface(
     fn,
@@ -63,7 +61,8 @@ interface = gr.Interface(
         gr.outputs.Textbox(label="summary by F-T5"),
     ],
     examples=[[ex] for ex in examples],
-    server_port=PORT,
+    server_port=int(os.environ.get('PORT', 8080)),
+    server_name='0.0.0.0',
     title="F-T5 News Summarizer",
     description="""
 F-T5 is a hybrid encoder-decoder model based on T5 and FNet.
