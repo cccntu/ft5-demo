@@ -64,7 +64,7 @@ interface = gr.Interface(
     description="""
 F-T5 is a hybrid encoder-decoder model based on T5 and FNet.
 The model architecture is based on T5, except the encoder self attention is replaced by fourier transform as in FNet.
-The model is pre-trained on openwebtext, fine-tuned on CNN/DM. See the README for more detail. A github mirror is available here: https://github.com/cccntu/ft5-demo-space.
+The model is pre-trained on openwebtext, fine-tuned on CNN/DM. See the README for more detail: https://github.com/cccntu/ft5-demo.
 """,
 )
 

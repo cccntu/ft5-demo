@@ -18,8 +18,8 @@ RUN python3 -m pip install --no-cache-dir --upgrade pip && \
 
 WORKDIR /code_dir/repo
 RUN python3 -m pip install --no-cache-dir huggingface_hub
-COPY download_and_cache.py download_and_cache.py
-RUN python3 download_and_cache.py
+#COPY download_and_cache.py download_and_cache.py
+#RUN python3 download_and_cache.py
 COPY . .
 ENV PORT 8080
 CMD ["./run.sh"]
