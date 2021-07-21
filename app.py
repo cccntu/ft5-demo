@@ -1,3 +1,4 @@
+import os
 from transformers import T5ForConditionalGeneration, T5TokenizerFast, pipeline
 from transformers.models.f_t5.modeling_t5 import (
     T5ForConditionalGeneration as FT5ForConditionalGeneration,
@@ -44,6 +45,8 @@ def fn(*args):
 
 
 import gradio as gr
+PORT = os.environ.get('PORT', None)
+PORT = int(PORT) if PORT is not None else None
 
 interface = gr.Interface(
     fn,
@@ -60,6 +63,7 @@ interface = gr.Interface(
         gr.outputs.Textbox(label="summary by F-T5"),
     ],
     examples=[[ex] for ex in examples],
+    port=PORT,
     title="F-T5 News Summarizer",
     description="""
 F-T5 is a hybrid encoder-decoder model based on T5 and FNet.
