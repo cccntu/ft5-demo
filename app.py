@@ -63,7 +63,7 @@ interface = gr.Interface(
         gr.outputs.Textbox(label="summary by F-T5"),
     ],
     examples=[[ex] for ex in examples],
-    port=PORT,
+    server_port=PORT,
     title="F-T5 News Summarizer",
     description="""
 F-T5 is a hybrid encoder-decoder model based on T5 and FNet.
